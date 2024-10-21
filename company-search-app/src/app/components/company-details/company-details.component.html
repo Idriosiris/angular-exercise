@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>{{ companyDetails.title }}</h2>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Company Number:</strong> {{ companyDetails.company_number }}
+    </li>
+
+    <li class="list-group-item" *ngIf="companyDetails.address">
+      <strong>Registered Office Address:</strong>
+      {{ companyDetails.address_snippet || '' }},
+    </li>
+
+    <li class="list-group-item">
+      <strong>Company Status:</strong> {{ companyDetails.company_status }}
+    </li>
+
+    <li class="list-group-item">
+      <strong>Company Type:</strong> {{ companyDetails.company_type }}
+    </li>
+
+    <li class="list-group-item">
+      <strong>Incorporated On:</strong> {{ companyDetails.date_of_creation | date }}
+    </li>
+  </ul>
+
+  <a class="btn btn-primary mt-3" (click)="goToOfficers()">List Officers</a>
+</div>

@@ -1,0 +1,18 @@
+<div class="container mt-4">
+  <h2>{{ companyName }}</h2>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Company Number:</strong> {{ companyNumber }}
+    </li>
+  </ul>
+
+  <h3 class="mt-4">Officers</h3>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let officer of officers">
+      <p><strong>{{ officer.name }}</strong> ({{ officer.officer_role }})</p>
+      <p>Appointed On: {{ officer.appointed_on | date }}</p>
+      <p *ngIf="officer.date_of_birth">Date of Birth: {{ officer.date_of_birth.year }}</p>
+    </li>
+  </ul>
+</div>

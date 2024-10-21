@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>Search Results for "{{ searchTerm }}"</h2>
+
+  <div *ngIf="totalResults > 0">
+    <p class="results-count">{{ totalResults }} results found</p>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let company of companies">
+        <a [routerLink]="['/company', company.company_number]">{{ company.title }}</a>
+        <p>{{ company.description }}</p>
+
+        <p *ngIf="company.address">
+          <strong>Address:</strong>
+          {{ company.address_snippet || '' }},
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="totalResults === 0">
+    <p>No results found for "{{ searchTerm }}".</p>
+  </div>
+</div>
