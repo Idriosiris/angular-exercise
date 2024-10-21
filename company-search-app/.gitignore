@@ -121,4 +121,6 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 
+src/environments
+
 # End of https://www.toptal.com/developers/gitignore/api/angular,intellij+all
