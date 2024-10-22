@@ -15,6 +15,11 @@ export class SearchResultsComponent implements OnInit {
   searchTerm: string = '';
   companies: any[] = [];
   totalResults: number = 0;
+  paginatedCompanies: any[] = [];
+
+  itemsPerPage: number = 5;
+  currentPage: number = 1;
+  totalPages: number = 0;
 
   constructor(private route: ActivatedRoute, private companyService: CompanyService) {}
 
@@ -25,7 +30,33 @@ export class SearchResultsComponent implements OnInit {
       this.companyService.searchCompanies(this.searchTerm).subscribe(response => {
         this.companies = response.items;
         this.totalResults = response.total_results;
+        this.setupPagination();
       });
+    }
+  }
+
+  setupPagination(): void {
+    this.totalPages = Math.ceil(this.companies.length / this.itemsPerPage); // Calculate total pages
+    this.paginate();
+  }
+
+  paginate(): void {
+    const startIndex: number = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex: number = startIndex + this.itemsPerPage;
+    this.paginatedCompanies = this.companies.slice(startIndex, endIndex); // Slice the array for current page
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.paginate();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.paginate();
     }
   }
 }

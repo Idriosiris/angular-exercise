@@ -19,3 +19,14 @@ p.results-count {
 .list-group-item {
   margin-bottom: 1rem;
 }
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+button.btn-secondary {
+  padding: 0.5rem 1rem;
+}
