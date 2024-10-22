@@ -1,5 +1,13 @@
 <div class="container mt-4">
-  <h2>{{ companyDetails.title }}</h2>
+  <div class="header">
+    <h2>{{ companyDetails.title }}</h2>
+
+    <div class="button-group">
+      <button class="btn btn-primary" (click)="goToOfficers()">List Officers</button>
+      <button class="btn btn-secondary" (click)="searchAgain()">Search Again</button>
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
 
   <ul class="list-group">
     <li class="list-group-item">
@@ -23,6 +31,4 @@
       <strong>Incorporated On:</strong> {{ companyDetails.date_of_creation | date }}
     </li>
   </ul>
-
-  <a class="btn btn-primary mt-3" (click)="goToOfficers()">List Officers</a>
 </div>

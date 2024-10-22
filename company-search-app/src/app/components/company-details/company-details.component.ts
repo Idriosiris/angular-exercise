@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {CompanyService} from "../../services/company.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-company-details',
@@ -18,7 +19,8 @@ export class CompanyDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +37,14 @@ export class CompanyDetailsComponent implements OnInit {
         companyNumber: this.companyDetails.company_number
       }
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  searchAgain() {
+    this.router.navigate(['/']);
   }
 }

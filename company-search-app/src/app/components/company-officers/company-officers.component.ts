@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {CompanyService} from "../../services/company.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-company-officers',
@@ -15,7 +16,11 @@ export class CompanyOfficersComponent implements OnInit {
   companyNumber: string = '';
   officers: any[] = [];
 
-  constructor(private companyService: CompanyService) {}
+  constructor(
+    private router: Router,
+    private companyService: CompanyService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     const navigation = history.state;
@@ -27,6 +32,15 @@ export class CompanyOfficersComponent implements OnInit {
         this.officers = response.items;
       });
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
+
+  searchAgain() {
+    this.router.navigate(['/']);
   }
 }
 ``

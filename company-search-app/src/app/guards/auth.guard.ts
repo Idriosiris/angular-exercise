@@ -3,12 +3,10 @@ import { Router, CanActivateFn, RouterStateSnapshot, ActivatedRouteSnapshot } fr
 import { AuthService } from '../services/auth.service';
 
 export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  const authService = inject(AuthService);
-  const router = inject(Router);
+  const authService: AuthService = inject(AuthService);
+  const router: Router = inject(Router);
 
-  const intendedUrl = state.url;
-
-  console.log('AuthGuard - Intended URL:', intendedUrl);
+  const intendedUrl: string = state.url;
 
   if (authService.isLoggedIn()) {
     return true;
