@@ -36,14 +36,14 @@ export class SearchResultsComponent implements OnInit {
   }
 
   setupPagination(): void {
-    this.totalPages = Math.ceil(this.companies.length / this.itemsPerPage); // Calculate total pages
+    this.totalPages = Math.ceil(this.companies.length / this.itemsPerPage);
     this.paginate();
   }
 
   paginate(): void {
     const startIndex: number = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex: number = startIndex + this.itemsPerPage;
-    this.paginatedCompanies = this.companies.slice(startIndex, endIndex); // Slice the array for current page
+    this.paginatedCompanies = this.companies.slice(startIndex, endIndex);
   }
 
   nextPage(): void {

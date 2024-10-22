@@ -18,7 +18,7 @@ export class CompanySearchComponent {
 
   searchCompanies() {
     if (this.isValidInput(this.searchTerm)) {
-      this.errorMessage = ''; // Clear error if valid
+      this.errorMessage = '';
       this.router.navigate(['/search-results', this.searchTerm]);
     } else {
       this.errorMessage = 'Please enter a valid company name or number (max 10 digits).';
@@ -27,14 +27,13 @@ export class CompanySearchComponent {
 
   // Validation method
   isValidInput(input: string): boolean {
-    const alphanumericRegex = /^[a-zA-Z0-9\s]+$/; // Allows letters, numbers, and spaces
-    const numericRegex = /^[0-9]{1,10}$/; // Allows only numbers, up to 10 digits
+    const alphanumericRegex: RegExp = /^[a-zA-Z0-9\s]+$/;
+    const numericRegex: RegExp = /^[0-9]{1,10}$/;
 
     if (input.trim() === '') {
-      return false; // Empty input is invalid
+      return false;
     }
 
-    // Check if the input is either alphanumeric or a valid number (<= 10 digits)
     return alphanumericRegex.test(input) || numericRegex.test(input);
   }
 }
